@@ -1,18 +1,16 @@
 module.exports = [
-  'strapi::logger',
   'strapi::errors',
   'strapi::security',
-
   'strapi::poweredBy',
   {
     name: 'strapi::cors',
     config: {
-      origin: ['https://silly-nightingale.142-93-209-108.plesk.page'],
-      methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
+      enabled: true,
       headers: '*',
-      keepHeaderOnError: true,
-    },
+      origin: ['https://silly-nightingale.142-93-209-108.plesk.page']
+    }
   },
+  'strapi::logger',
   'strapi::query',
   'strapi::body',
   'strapi::session',

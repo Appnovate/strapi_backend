@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * event-user service
+ * pledge-form service
  */
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::event-user.event-user');
+module.exports = createCoreService('api::pledge-form.pledge-form');

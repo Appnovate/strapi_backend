@@ -303,34 +303,28 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiEventUserEventUser extends Schema.CollectionType {
-  collectionName: 'event_users';
+export interface ApiPledgeFormPledgeForm extends Schema.CollectionType {
+  collectionName: 'pledge_forms';
   info: {
-    singularName: 'event-user';
-    pluralName: 'event-users';
-    displayName: 'event-user';
+    singularName: 'pledge-form';
+    pluralName: 'pledge-forms';
+    displayName: 'pledge-form';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        minLength: 4;
-        maxLength: 25;
-      }>;
-    email: Attribute.String & Attribute.Required & Attribute.Unique;
-    phone: Attribute.BigInteger & Attribute.Required & Attribute.Unique;
+    name: Attribute.String & Attribute.Required;
+    email: Attribute.Email & Attribute.Required & Attribute.Unique;
+    phone: Attribute.BigInteger;
     city: Attribute.String;
-    occupation: Attribute.String;
-    account_status: Attribute.Boolean;
+    isCheck: Attribute.Boolean & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::event-user.event-user', 'oneToOne', 'admin::user'> &
+    createdBy: Attribute.Relation<'api::pledge-form.pledge-form', 'oneToOne', 'admin::user'> &
       Attribute.Private;
-    updatedBy: Attribute.Relation<'api::event-user.event-user', 'oneToOne', 'admin::user'> &
+    updatedBy: Attribute.Relation<'api::pledge-form.pledge-form', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -698,7 +692,7 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::event-user.event-user': ApiEventUserEventUser;
+      'api::pledge-form.pledge-form': ApiPledgeFormPledgeForm;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
